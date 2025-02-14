@@ -57,4 +57,30 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   );
 
-  
+  document.addEventListener('DOMContentLoaded', function() {
+    const marquee = document.querySelector('.marquee-content');
+    const items = Array.from(marquee.children);
+    
+    // Clone items with proper spacing
+    const cloneSet = items.map(item => {
+        const clone = item.cloneNode(true);
+        clone.style.marginRight = window.innerWidth < 576 ? '10px' : '15px';
+        return clone;
+    });
+    
+    marquee.append(...cloneSet);
+    
+    // Calculate proper animation duration
+    const itemWidth = items[0].offsetWidth + 
+        parseInt(getComputedStyle(items[0]).marginRight);
+    const totalWidth = itemWidth * items.length;
+    const duration = (totalWidth / 100) * 0.5; // Adjust speed multiplier
+    
+    marquee.style.animationDuration = `${duration}s`;
+    
+    // Reset animation for smooth start
+    marquee.style.animation = 'none';
+    setTimeout(() => {
+        marquee.style.animation = `marquee ${duration}s linear infinite`;
+    }, 50);
+});
