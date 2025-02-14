@@ -295,7 +295,7 @@ color: var(--accent);
 .feature h3 {
 font-size: 1.5rem;
 margin-top: 10px;
-color: var(--accent);
+color: var(--text);
 
 }
 
@@ -528,4 +528,24 @@ grid-row: span 1; /* Stack normally on smaller screens */
 grid-template-columns: 1fr;
 }
 }
+.our-clients{
 
+    background-color: var(--secondary);
+    color: var(--text);
+   
+  
+}
+
+.client-item {
+    width: 100%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+  }
+  .client-item img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
