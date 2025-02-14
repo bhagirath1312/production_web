@@ -17,538 +17,8 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
-    <style>
-      :root {
-        --primary: #0d0d0d; /* Deep black */
-        --accent: rgb(233, 153, 62); /* Darker orange */
-        --secondary: #1a1a1a; /* Rich dark gray */
-        --text: #e0e0e0; /* Softer white */
-        --overlay: rgba(15, 15, 15, 0.9);
-      }
-
-      body {
-        font-family: "Inter", sans-serif;
-        background: rgba(0, 0, 0, 0);
-        color: var(--text);
-        overflow-x: hidden;
-      }
-
-      /* Improved Navbar */
-      .navbar {
-        height: 100px;
-        background: rgba(0, 0, 0, 0);
-        backdrop-filter: blur(10px); /* Adds glass effect */
-        transition: all 0.3s ease;
-      }
-
-      .navbar-brand {
-        padding: 0;
-        height: 120px;
-      }
-
-      .navbar-brand img {
-        height: 120px;
-        width: auto;
-        max-width: 180px;
-        transition: transform 0.3s ease;
-      }
-
-      .nav-link {
-        padding: 0 1.2rem !important;
-        height: 80px;
-        display: flex;
-        align-items: center;
-        position: relative;
-        color: var(--text) !important;
-      }
-
-      .nav-link::after {
-        content: "";
-        position: absolute;
-        bottom: 20px;
-        left: 1.2rem;
-        width: 0;
-        height: 2px;
-        background: var(--accent);
-        transition: width 0.3s ease;
-      }
-
-      .nav-link:hover::after,
-      .nav-link.active::after {
-        width: calc(100% - 2.4rem);
-      }
-
-      /* Mobile Responsiveness */
-      @media (max-width: 992px) {
-        .navbar {
-          height: auto;
-          padding: 0.5rem 0;
-        }
-
-        .navbar-brand img {
-          height: 120px;
-        }
-
-        .nav-link {
-          height: auto;
-          padding: 0.8rem 1rem !important;
-        }
-
-        .nav-link::after {
-          bottom: 8px;
-        }
-      }
-
-      /* Hero Section Improvements */
-      .hero-section {
-        height: 100vh;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .carousel-item {
-        height: 100vh;
-        background-position: center;
-        background-size: cover;
-        position: relative;
-      }
-
-      .carousel-item::after {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          45deg,
-          var(--overlay) 30%,
-          transparent 100%
-        );
-      }
-
-      .hero-content {
-    position: absolute;
-    z-index: 1;
-    top: 55%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    width: 90%;
-    max-width: 1200px;
-    padding: 20px;
-}
-
-      .hero-title {
-        font-size: 4.5rem;
-        font-weight: 800;
-        line-height: 1.1;
-        margin-bottom: 1.5rem;
-        opacity: 0;
-        transform: translateY(30px);
-        animation: fadeUp 1s ease forwards 0.3s;
-      }
-
-      /* Section Enhancements */
-
-      .section {
-        padding: 8rem 0;
-        position: relative;
-        background: #141414;
-      }
-
-      /* .card-service {
-        background: rgb(34, 37, 41);
-        border-radius: 16px;
-        padding: 2.5rem;
-        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-      }
-
-      .card-service:hover {
-        transform: translateY(-10px);
-
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-      } */
-
-      .btn-custom {
-        background: var(--accent);
-        padding: 1rem 2.5rem;
-        font-weight: 600;
-        letter-spacing: 0.05em;
-        border-radius: 50px;
-        transition: all 0.3s ease;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .btn-custom:hover {
-        transform: scale(1.05);
-        background-color: var(--accent);
-        box-shadow: 0 8px 30px rgb(237, 132, 12);;
-      }
-
-      .section-title {
-        font-size: 3rem;
-        font-weight: 800;
-        position: relative;
-        margin-bottom: 4rem;
-      }
-
-      .section-title::after {
-        content: "";
-        position: absolute;
-        bottom: -1rem;
-        left: 0;
-        width: 80px;
-        height: 4px;
-        background: var(--accent);
-      }
-
-      @keyframes fadeUp {
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      /* Portfolio Grid */
-      .portfolio-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 2rem;
-        margin-top: 4rem;
-      }
-
-      .portfolio-item {
-        position: relative;
-        border-radius: 12px;
-        overflow: hidden;
-        transition: transform 0.3s ease;
-      }
-
-      .portfolio-item:hover {
-        transform: scale(1.03);
-      }
-
-      /* Contact Section */
-      .contact-section {
-        background: var(--secondary);
-        border-radius: 24px;
-        padding: 4rem;
-        margin: 4rem 0;
-      }
-
-      .form-control {
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        color: var(--text);
-        transition: all 0.3s ease;
-      }
-
-      .form-control:focus {
-        background: rgba(255, 255, 255, 0.1);
-        border-color: var(--accent);
-        box-shadow: 0 0 0 0.25rem rgba(255, 70, 84, 0.25);
-      }
-
-      @media (max-width: 768px) {
-        .hero-title {
-          font-size: 2.5rem;
-        }
-
-        .section-title {
-          font-size: 2rem;
-        }
-
-        .contact-section {
-          padding: 2rem;
-        }
-      }
-
-#about {
-  padding: 60px 20px;
-  text-align: center;
-  background: var(--secondary);
-}
-
-#about h2 {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: var(--text);
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-#about p {
-  font-size: 1.2rem;
-  color: var(--text);
-  max-width: auto;
-  line-height: 1.6;
-  text-align: center;
-  background: rgb(34, 37, 41);
-  border-radius: 16px;
-  padding: 2rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  margin: 0 auto;
-}
-
-.about-features {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  margin-top: 40px;
-}
-
-.feature {
-  background: rgba(34, 37, 41, 0.8);
-  border-radius: 16px;
-  padding: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  text-align: center;
-  transition: transform 0.3s ease;
-}
-
-.feature:hover {
-  transform: translateY(-5px);
-}
-
-.icon {
-  font-size: 2rem;
-  color: var(--accent);
-}
-
-.feature h3 {
-  font-size: 1.5rem;
-  margin-top: 10px;
-  color: var(--text);
-}
-
-.feature p {
-  font-size: 1rem;
-  color: var(--text);
-  line-height: 1.4;
-}
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-  #about {
-    padding: 50px 15px;
-  }
-
-  #about h2 {
-    font-size: 2rem;
-  }
-
-  #about p {
-    font-size: 1rem;
-    padding: 1.5rem;
-  }
-
-  .about-features {
-    grid-template-columns: 1fr;
-  }
-
-  .feature {
-    padding: 15px;
-  }
-
-  .feature h3 {
-    font-size: 1.2rem;
-  }
-
-  .icon {
-    font-size: 1.8rem;
-  }
-}
-
-@media (max-width: 480px) {
-  #about {
-    padding: 40px 10px;
-  }
-
-  #about h2 {
-    font-size: 1.8rem;
-  }
-
-  #about p {
-    font-size: 0.95rem;
-  }
-
-  .feature h3 {
-    font-size: 1.1rem;
-  }
-
-  .icon {
-    font-size: 1.5rem;
-  }
-}
-
-#services {
-  padding: 80px 20px;
-  background: var(--secondary);
-  text-align: center;
-}
-
-#services h2 {
-  font-size: 2.8rem;
-  font-weight: bold;
-  color: var(--text);
-  margin-bottom: 40px;
-}
-
-.services-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 30px;
-  text-align: left;
-}
-
-.service-category {
-  background: rgb(34, 37, 41);
-  border-radius: 16px;
-  padding: 25px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: transform 0.3s ease;
-}
-
-.service-category:hover {
-  transform: translateY(-5px);
-}
-
-.service-category h3 {
-  font-size: 1.8rem;
-  color: var(--accent);
-  margin-bottom: 15px;
-}
-
-.service-category ul {
-  list-style: none;
-  padding: 0;
-}
-
-.service-category li {
-  font-size: 1.1rem;
-  color: var(--text);
-  line-height: 1.6;
-  padding: 5px 0;
-  position: relative;
-}
-
-.service-category li::before {
-  content: "•";
-  color: var(--accent);
-  font-size: 1.2rem;
-  margin-right: 10px;
-}
-
-
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  #services {
-    padding: 60px 15px;
-  }
-
-  #services h2 {
-    font-size: 2.2rem;
-  }
-
-  .service-category {
-    padding: 20px;
-  }
-
-  .service-category h3 {
-    font-size: 1.5rem;
-  }
-
-  .service-category li {
-    font-size: 1rem;
-  }
-
-}
-
-@media (max-width: 480px) {
-  #services {
-    padding: 50px 10px;
-  }
-
-  #services h2 {
-    font-size: 2rem;
-  }
-
-  .service-category {
-    padding: 15px;
-  }
-
-  .service-category h3 {
-    font-size: 1.3rem;
-  }
-
-  .service-category li {
-    font-size: 0.95rem;
-  }
-}
-
-
-#our-work {
-  padding: 80px 20px;
-  background: #141414;
-  text-align: center;
-}
-
-#our-work h2 {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: var(--text);
-  margin-bottom: 40px;
-}
-
-.work-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 15px;
-}
-
-.work-item {
-  border-radius: 12px;
-  overflow: hidden;
-  transition: transform 0.3s ease-in-out;
-}
-
-.work-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transition: transform 0.3s ease;
-}
-
-.work-item:hover img {
-  transform: scale(1.05);
-}
-
-.vertical {
-  grid-row: span 2; /* Makes this image take 2 rows */
-}
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-  .work-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .vertical {
-    grid-row: span 1; /* Stack normally on smaller screens */
-  }
-}
-
-@media (max-width: 480px) {
-  .work-grid {
-    grid-template-columns: 1fr;
-  }
-}
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <script src="index.js"></script>
   </head>
   <body>
     <!-- Navigation -->
@@ -629,14 +99,14 @@
         <p class="lead mb-4 fs-5" style="color: var(--text)">
           Mumbai's Premier Production House for Impactful Visuals
         </p>
-        <a href="#contact" class="btn btn-custom">Start Your Project</a>
+        <a href="#contact" class="btn btn-custom">Get in Touch</a>
       </div>
     </section>
 
     <section id="about">
         <div class="container">
           <h2>About Us</h2>
-          <p>
+          <p style="background-color: var(--secondary);">
             At <span class="highlight">Pictureshuru Production</span>, we believe every frame has a story to tell. With a passion for creativity and precision, we specialize in professional photography, high-quality videography, and creative storytelling. Our goal is to bring your vision to life with stunning visuals that leave a lasting impact.
           </p>
       
@@ -662,63 +132,12 @@
         </div>
       </section>
 
-    <!-- Services Section -->
-    <!-- <section id="services" class="section">
-      <div class="container">
-        <h2 class="section-title">Our Expertise</h2>
-        <div class="row g-4">
-          <div class="col-lg-4">
-            <div class="card-service">
-              <div class="icon-box mb-4">
-                <i class="fas fa-video fa-3x text-accent"></i>
-              </div>
-              <h3>Film Production</h3>
-              <p>
-                End-to-end video production services from concept to delivery
-              </p>
-              <ul class="list-unstyled">
-                <li>• Commercial Films</li>
-                <li>• Music Videos</li>
-                <li>• Corporate Videos</li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="card-service">
-              <div class="icon-box mb-4">
-                <i class="fas fa-camera fa-3x text-accent"></i>
-              </div>
-              <h3>Photography</h3>
-              <p>Professional photography services for all occasions</p>
-              <ul class="list-unstyled">
-                <li>• Product Photography</li>
-                <li>• Fashion Shoots</li>
-                <li>• Event Coverage</li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-lg-4">
-            <div class="card-service">
-              <div class="icon-box mb-4">
-                <i class="fas fa-magic fa-3x text-accent"></i>
-              </div>
-              <h3>Post Production</h3>
-              <p>Professional editing and finishing services</p>
-              <ul class="list-unstyled">
-                <li>• Color Grading</li>
-                <li>• Visual Effects</li>
-                <li>• Sound Design</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section> -->
+  
     <section id="services">
         <div class="container">
           <h2>Our Services</h2>
           <div class="services-grid">
-            <div class="service-category">
+            <div class="service-category" style="background-color: var(--secondary);">
               <h3>Social Media & Events</h3>
               <ul>
                 <li>Social Media Videos & Reels</li>
@@ -730,7 +149,7 @@
               </ul>
             </div>
       
-            <div class="service-category">
+            <div class="service-category" style="background-color: var(--secondary);">
               <h3>Films & Editing</h3>
               <ul>
                 <li>Long Format Films</li>
@@ -743,7 +162,7 @@
               </ul>
             </div>
       
-            <div class="service-category">
+            <div class="service-category" style="background-color: var(--secondary);">
               <h3>Commercial & Branding</h3>
               <ul>
                 <li>Brand Collaboration Videos</li>
@@ -760,87 +179,34 @@
         </div>
       </section>
 
-
-
-
-
-
-
-
-
-
       <section id="our-work">
         <div class="container">
           <h2>Our Work</h2>
           <div class="work-grid">
             <div class="work-item">
-              <img src="images/work1.jpg" alt="Project 1">
+              <img src="media/Screenshot 2025-02-14 at 4.30.33 PM.png" alt="Project 1">
             </div>
             <div class="work-item">
-              <img src="images/work2.jpg" alt="Project 2">
+              <img src="media/Screenshot 2025-02-14 at 4.35.08 PM.png" alt="Project 2">
             </div>
             <div class="work-item vertical">
-              <img src="images/work3.jpg" alt="Vertical Project">
+              <img src="media/Screenshot 2025-02-14 at 5.10.42 PM.png" alt="Vertical Project">
             </div>
             <div class="work-item">
-              <img src="images/work4.jpg" alt="Project 4">
+              <img src="media/Screenshot 2025-02-14 at 5.24.34 PM.png" alt="Project 4" >
             </div>
             <div class="work-item">
-              <img src="images/work5.jpg" alt="Project 5">
+              <img src="media/Screenshot 2025-02-14 at 5.12.44 PM.png" alt="Project 5">
             </div>
             <div class="work-item">
-              <img src="images/work6.jpg" alt="Project 6">
+              <img src="media/Screenshot 2025-02-14 at 5.18.21 PM.png" alt="Project 6">
             </div>
             <div class="work-item">
-              <img src="images/work7.jpg" alt="Project 7">
+              <img src="media/Screenshot 2025-02-14 at 5.23.19 PM.png" alt="Project 7">
             </div>
           </div>
         </div>
       </section>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="section bg-dark">
-      <div class="container">
-        <h2 class="section-title">Featured Work</h2>
-        <div class="portfolio-grid">
-          <div class="portfolio-item">
-            <img src="media/project1.jpg" class="img-fluid" alt="Project 1" />
-            <div class="portfolio-overlay">
-              <h4>Brand Campaign</h4>
-              <p>Fashion Retail</p>
-            </div>
-          </div>
-          <div class="portfolio-item">
-            <img src="media/project2.jpg" class="img-fluid" alt="Project 2" />
-            <div class="portfolio-overlay">
-              <h4>Music Video</h4>
-              <p>Bollywood Production</p>
-            </div>
-          </div>
-          <div class="portfolio-item">
-            <img src="media/project3.jpg" class="img-fluid" alt="Project 3" />
-            <div class="portfolio-overlay">
-              <h4>Corporate Film</h4>
-              <p>Tech Startup</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- Contact Section -->
     <section id="contact" class="section">
@@ -903,65 +269,5 @@
       </div>
     </section>
 
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const sections = document.querySelectorAll("section");
-        const navLinks = document.querySelectorAll(".nav-link");
-
-        function activateNavLink() {
-          let currentSection = "";
-          sections.forEach((section) => {
-            const sectionTop = section.offsetTop - 150; // Adjust offset as needed
-            if (window.scrollY >= sectionTop) {
-              currentSection = section.getAttribute("id");
-            }
-          });
-
-          navLinks.forEach((link) => {
-            link.classList.remove("active");
-            if (link.getAttribute("href").includes(currentSection)) {
-              link.classList.add("active");
-            }
-          });
-        }
-
-        window.addEventListener("scroll", activateNavLink);
-      });
-      // Navbar Scroll Effect
-      window.addEventListener("scroll", function () {
-        if (window.scrollY > 50) {
-          document.querySelector(".navbar").classList.add("scrolled");
-        } else {
-          document.querySelector(".navbar").classList.remove("scrolled");
-        }
-      });
-
-      // Initialize Carousel
-      const myCarousel = new bootstrap.Carousel("#heroCarousel", {
-        interval: 6000,
-        wrap: true,
-      });
-
-      // Smooth Scroll
-      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-        anchor.addEventListener("click", function (e) {
-          e.preventDefault();
-          document.querySelector(this.getAttribute("href")).scrollIntoView({
-            behavior: "smooth",
-          });
-        });
-      });
-
-      // Scroll Reveal Animation
-      ScrollReveal().reveal(
-        ".card-service, .portfolio-item, .contact-section",
-        {
-          delay: 300,
-          distance: "50px",
-          origin: "bottom",
-          interval: 200,
-        }
-      );
-    </script>
   </body>
 </html>
