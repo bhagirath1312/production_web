@@ -11,7 +11,7 @@
     box-sizing: border-box;
   }
   html {
-    scroll-behavior: smooth;
+    scroll-padding-top: 80px; /* Adjust based on navbar height */
   }
   body {
     font-family: "Inter", sans-serif;
@@ -22,7 +22,7 @@
 
   /* Improved Navbar */
   .navbar {
-    height: 100px;
+    height: 80px;
     background: rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(15px); /* Adds glass effect */
     transition: all 0.3s ease;
