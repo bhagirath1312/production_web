@@ -1,3 +1,19 @@
+// Navbar Fucntion when user in mobile and click on nav-link after navbar automatically close
+document.addEventListener("DOMContentLoaded", function () {
+  const navbarToggler = document.querySelector(".navbar-toggler");
+  const navbarCollapse = document.querySelector(".navbar-collapse");
+
+  document.querySelectorAll(".nav-link").forEach((link) => {
+    link.addEventListener("click", function () {
+      if (window.innerWidth < 992 && navbarCollapse.classList.contains("show")) {
+        navbarToggler.click(); // Closes the navbar
+      }
+    });
+  });
+});
+
+
+
 document.addEventListener("DOMContentLoaded", function () {
     const sections = document.querySelectorAll("section");
     const navLinks = document.querySelectorAll(".nav-link");
@@ -110,3 +126,12 @@ window.addEventListener("keydown", (e) => {
         modal.classList.add("hidden");
     }
 });
+
+
+
+
+
+
+
+
+
