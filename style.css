@@ -23,7 +23,7 @@
   /* Improved Navbar */
   .navbar {
     height: 80px;
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(15px); /* Adds glass effect */
     transition: all 0.3s ease;
   }
