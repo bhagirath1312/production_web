@@ -5,7 +5,14 @@
     --text: #e0e0e0; /* Softer white */
     --overlay: rgba(15, 15, 15, 0.9);
   }
-
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
   body {
     font-family: "Inter", sans-serif;
     background: var(--primary);
@@ -16,8 +23,8 @@
   /* Improved Navbar */
   .navbar {
     height: 100px;
-    background: rgba(0, 0, 0, 0);
-    backdrop-filter: blur(10px); /* Adds glass effect */
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(15px); /* Adds glass effect */
     transition: all 0.3s ease;
   }
 
@@ -202,14 +209,14 @@ padding: 20px;
     background: var(--secondary);
     border-radius: 24px;
     padding: 4rem;
-    margin: 4rem 0;
+    /* margin: 4rem 0; */
   }
   #contact{
     background-color: var(--primary);
   }
 
   .form-control {
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--secondary);
     border: 1px solid rgba(255, 255, 255, 0.1);
     color: var(--text);
     transition: all 0.3s ease;
@@ -218,7 +225,8 @@ padding: 20px;
   .form-control:focus {
     background: rgba(255, 255, 255, 0.1);
     border-color: var(--accent);
-    box-shadow: 0 0 0 0.25rem rgba(255, 70, 84, 0.25);
+    color: var(--text);
+    box-shadow: 0 0 0 0.25rem rgba(130, 27, 179, 0.25);
   }
 
   @media (max-width: 768px) {
@@ -528,6 +536,7 @@ grid-row: span 1; /* Stack normally on smaller screens */
 grid-template-columns: 1fr;
 }
 }
+
 .our-clients{
 
     background-color: var(--secondary);
@@ -558,10 +567,9 @@ grid-template-columns: 1fr;
 }
 
 .marquee-content {
-    display: flex;
-    animation: marquee 10s linear infinite;
-    width: max-content;
-    align-items: stretch; /* Ensure equal height in flex container */
+  display: flex;
+  animation: marquee 15s linear infinite;
+  width: max-content; /* Ensure equal height in flex container */
 }
 
 .country-scroll-item {
@@ -601,8 +609,8 @@ grid-template-columns: 1fr;
 }
 
 @keyframes marquee {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(calc(-50% - 67.5px)); }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
 }
 
 @media (max-width: 576px) {
@@ -623,6 +631,139 @@ grid-template-columns: 1fr;
     }
     
     @keyframes marquee {
-        100% { transform: translateX(calc(-50% - 320px)); }
+        100% { transform: translateX(calc(-100%)); }
     }
+}
+
+
+
+
+
+
+
+
+
+/* Casting Director Section */
+#casting-director {
+  background: var(--secondary);
+  padding: 60px 0;
+}
+
+#casting-director h2 {
+  font-size: 2rem;
+  color: var(--text);
+  margin-bottom: 15px;
+}
+
+#casting-director p {
+  font-size: 1.1rem;
+  color: #bbb;
+  margin-bottom: 30px;
+}
+
+/* Grid Layout */
+.casting-director-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+/* Casting Card */
+.casting-card {
+  background: #1f1f1f;
+  padding: 20px;
+  width: 300px;
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+}
+
+.casting-card:hover {
+  transform: translateY(-5px);
+}
+
+.casting-icon img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 15px;
+}
+
+.casting-card h4 {
+  color: white;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+.casting-card p {
+  color: #bbb;
+  font-size: 1rem;
+}
+
+/* Featured Projects */
+.project-gallery {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.project-card {
+  background: #1f1f1f;
+  width: 250px;
+  border-radius: 8px;
+  text-align: center;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.project-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.project-card h4 {
+  color: white;
+  font-size: 1.1rem;
+  margin-top: 10px;
+}
+
+.project-card a {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: white;
+  background: var(--primary);
+  transition: 0.3s;
+}
+
+.project-card a:hover {
+  background: var(--text);
+}
+
+/* Responsive for Mobile */
+@media (max-width: 768px) {
+  .casting-director-grid {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .casting-card {
+      width: 90%;
+  }
+
+  .project-gallery {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .project-card {
+      width: 90%;
+  }
 }
