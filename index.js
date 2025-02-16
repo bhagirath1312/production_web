@@ -84,3 +84,29 @@ document.addEventListener("DOMContentLoaded", function () {
         marquee.style.animation = `marquee ${duration}s linear infinite`;
     }, 50);
 });
+
+const modal = document.getElementById("modal");
+const openModal = document.getElementById("openModal");
+const closeModal = document.getElementById("closeModal");
+
+openModal.addEventListener("click", () => {
+    modal.classList.remove("hidden");
+});
+
+closeModal.addEventListener("click", () => {
+    modal.classList.add("hidden");
+});
+
+// Close modal when clicking outside
+window.addEventListener("click", (e) => {
+    if (e.target === modal) {
+        modal.classList.add("hidden");
+    }
+});
+
+// Close with Esc key
+window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+        modal.classList.add("hidden");
+    }
+});
