@@ -42,7 +42,12 @@ document.addEventListener("DOMContentLoaded", function () {
 //   });
 // });
 
-
+window.onload = function () {
+  setTimeout(() => {
+      document.querySelector(".preloader").classList.add("hide");
+      document.getElementById("main-content").style.display = "block";
+  }, 2000); // Adjust time as needed
+};
 
 document.addEventListener("DOMContentLoaded", function () {
     const sections = document.querySelectorAll("section");
