@@ -11,7 +11,7 @@
     box-sizing: border-box;
   }
   html {
-    scroll-padding-top: 80px; /* Adjust based on navbar height */
+    scroll-behavior: smooth;
   }
   body {
     font-family: "Inter", sans-serif;
@@ -64,7 +64,9 @@
   .nav-link.active::after {
     width: calc(100% - 2.4rem);
   }
-
+  section {
+    scroll-margin-top: 140px; /* Adjust based on navbar height */
+  }
   /* Mobile Responsiveness */
   @media (max-width: 992px) {
     .navbar {
@@ -184,8 +186,52 @@ padding: 20px;
       transform: translateY(0);
     }
   }
-
-  /* Portfolio Grid */
+  .image-wrapper {
+    width: 320px;  /* Fixed width for all images */
+    height: 550px; /* Fixed height for all images */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f9fa; /* Background color to avoid blank spaces */
+    border-radius: 10px;
+    padding: 5px;
+    overflow: hidden; /* Ensures no overflow issues */
+  }
+  
+  .image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Crops image slightly while keeping equal width */
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .image-wrapper {
+      width: 280px;
+      height: 210px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .image-wrapper {
+      width: 250px;
+      height: 400px;
+    }
+  }
+  @media (max-width: 768px) {
+    .fixed-image {
+      width: 300px; /* Slightly smaller width on mobile */
+      height: 220px; /* Adjusted height */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .fixed-image {
+      width: 250px; /* Even smaller width for very small screens */
+      height: 200px;
+    }
+  }
+  /* Portfolio Grid
   .portfolio-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -202,7 +248,7 @@ padding: 20px;
 
   .portfolio-item:hover {
     transform: scale(1.03);
-  }
+  } */
 
   /* Contact Section */
   .contact-section {
@@ -213,6 +259,9 @@ padding: 20px;
   }
   #contact{
     background-color: var(--primary);
+    padding: 0px;
+  
+  
   }
 
   .form-control {
@@ -244,7 +293,7 @@ padding: 20px;
   }
 
 #about {
-padding: 60px 20px;
+padding: 20px 20px;
 text-align: center;
 background: var(--primary);
 }
@@ -373,7 +422,7 @@ font-size: 1.5rem;
 }
 
 #services {
-/* padding: 80px 20px; */
+padding: 20px 20px;
 background: var(--primary);
 text-align: center;
 }
@@ -480,7 +529,7 @@ font-size: 0.95rem;
 
 
 #our-work {
-padding: 80px 20px;
+padding: 20px 20px;
 background: var(--primary);
 text-align: center;
 }

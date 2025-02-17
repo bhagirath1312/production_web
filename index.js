@@ -13,6 +13,36 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+// document.querySelectorAll(".nav-link").forEach(link => {
+//   link.addEventListener("click", function (event) {
+//     event.preventDefault();
+    
+//     const targetId = this.getAttribute("href");
+//     const targetElement = document.querySelector(targetId);
+//     const navbar = document.querySelector(".navbar");
+//     const navbarToggler = document.querySelector(".navbar-toggler"); // Mobile menu button
+//     const navbarCollapse = document.querySelector(".navbar-collapse"); // Collapsible menu
+
+//     if (targetElement) {
+//       const navbarHeight = navbar.offsetHeight;
+//       const offset = 0; // Extra space to avoid cutting the heading
+//       const targetPosition = targetElement.offsetTop - navbarHeight - offset;
+
+//       window.scrollTo({
+//         top: targetPosition,
+//         behavior: "smooth",
+//       });
+//     }
+
+//     // Close the mobile menu after clicking a link
+//     if (navbarToggler && navbarCollapse.classList.contains("show")) {
+//       navbarCollapse.classList.remove("show"); // Hide the menu
+//       navbarToggler.setAttribute("aria-expanded", "false"); // Update accessibility
+//     }
+//   });
+// });
+
+
 
 document.addEventListener("DOMContentLoaded", function () {
     const sections = document.querySelectorAll("section");
