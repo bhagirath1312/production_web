@@ -46,7 +46,7 @@ window.onload = function () {
   setTimeout(() => {
       document.querySelector(".preloader").classList.add("hide");
       document.getElementById("main-content").style.display = "block";
-  }, 2000); // Adjust time as needed
+  }, 1000); // Adjust time as needed
 };
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -170,3 +170,41 @@ window.addEventListener("keydown", (e) => {
 
 
 
+(function(){
+  emailjs.init("1zx0JaSVwZIqWRndh"); // Replace with your Public Key
+})();
+
+document.getElementById("contact-form").addEventListener("submit", function(event) {
+event.preventDefault();
+console.log("Form data:", new FormData(this)); // Log form data to check
+
+emailjs.sendForm("service_675iccb", "template_rmdnd6j", this)
+.then(function(response) {
+document.getElementById("response-message").innerHTML = "<span class='text-success'>Message Sent Successfully!</span>";
+}, function(error) {
+console.log("Error:", error); // Log the error details
+document.getElementById("response-message").innerHTML = "<span class='text-danger'>Failed to Send Message. Try Again.</span>";
+});
+
+this.reset(); // Clear form after submission
+});
+
+
+
+
+
+
+
+
+
+
+// For smooth scrolling on anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+      });
+  });
+});
