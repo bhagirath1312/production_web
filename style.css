@@ -664,7 +664,24 @@ body {
   font-weight: 700;
   color: #111;
 }
+@media (max-width: 768px) {
+  .work-item {
+    transition: none;  /* Disable transition for mobile */
+  }
+  
+  .work-item.active {
+    transform: scale(1.03);
+  }
+  
+  .work-item.active img {
+    transform: scale(1.08);
+  }
 
+  .work-item.active .overlay {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
 .our-clients{
 
     background-color: var(--secondary);
@@ -868,4 +885,25 @@ body {
   border-radius: 5px;
   text-transform: uppercase;
   color: #111;
+}
+
+
+/* Mobile Support: Simulate hover effect */
+@media (max-width: 768px) {
+  .canva-stock-item {
+    transition: none;  /* Disable transition for mobile */
+  }
+
+  .canva-stock-item.active {
+    transform: scale(1.05);
+  }
+
+  .canva-stock-item.active img {
+    transform: scale(1.1);
+  }
+
+  .canva-stock-item.active .canva-overlay {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
